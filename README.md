@@ -3,9 +3,32 @@ NMAs-BR
  # NMAs-BR Shiny App
 # Note:
 The proposed MH-MCMC–based NMAs-BR should be regarded as an accessible and reproducible Bayesian NMA implementation rather than a replacement for established frequentist or Bayesian packages. Compared with JAGS/rjags-based workflows, which require installation of external JAGS software, the proposed app.R provides a more transparent and user-friendly platform for conducting Bayesian NMA, examining prior assumptions, generating MCMC diagnostics, and comparing Bayesian estimates with frequentist NMA results. Therefore, the main academic contribution of this study is the provision of a complete, browser-accessible, and reproducible R/Shiny implementation that helps readers understand and apply Bayesian NMA using MH-MCMC.
+#A good summary sentence for the manuscript would be:
 
+The meta and netmeta packages were used for frequentist pairwise and network meta-analysis, whereas gemtc and rjags were used for Bayesian NMA through MCMC computation. The coda package was used to summarize and diagnose MCMC outputs. Compared with JAGS/rjags-based workflows, the proposed NMAs-BR app.R provides a transparent and user-friendly MH-MCMC implementation that allows readers to reproduce Bayesian NMA procedures, examine prior assumptions, and compare Bayesian estimates with frequentist NMA results.
+
+The clean conceptual difference is:
+
+meta → direct pairwise evidence
+netmeta → frequentist NMA
+gemtc → Bayesian NMA framework
+rjags → engine/interface for Bayesian MCMC via JAGS
+coda → MCMC diagnostics
+your app.R → transparent MH-MCMC teaching/reproducibility platform
 This repository contains a self-contained `app.R` for browser-based network meta-analysis (NMA).
 
+
+In R-based NMA, these packages have different roles. They are not all “NMA methods”; some are model-fitting packages, some are MCMC engines/interfaces, and some are diagnostic/support packages. In your manuscript, the workflow compares Bayesian and frequentist NMA using packages including gemtc, rjags, coda, netmeta, and meta, with JAGS used through the R interface.
+
+
+
+Package	Main role in R	NMA type	What it does best	Main limitation	In your study/app.R
+meta	Pairwise meta-analysis and data preparation	Frequentist pairwise meta-analysis	Handles direct pairwise meta-analysis, binary outcomes via metabin(), and converts arm-level data into contrast-level data using pairwise()	Not a full network meta-analysis package by itself	Useful for preparing data_f_bin before netmeta; also useful for direct comparison forest plots
+netmeta	Frequentist network meta-analysis	Frequentist NMA	Performs fixed/random-effect NMA, network plots, forest plots, consistency checks, netsplit(), decomp.design(), and P-scores	Does not use Bayesian priors or MCMC	Used as the main frequentist comparator in Figure 2 and other frequentist outputs
+gemtc	Bayesian NMA model framework	Bayesian NMA	Builds Bayesian NMA models, treatment rankings, consistency/inconsistency models	Usually depends on JAGS/rjags backend; setup may be harder	Used as a Bayesian package comparator
+rjags	R interface to JAGS	Bayesian MCMC engine/interface	Runs JAGS Bayesian models from R using MCMC	Requires separate installation of external JAGS software, which can be difficult for users	Manuscript notes this installation burden as a reason NMAs-BR/app.R may be more user-friendly.
+coda	MCMC output diagnosis	MCMC diagnostics, not NMA fitting	Summarizes MCMC chains, trace plots, density plots, Gelman-Rubin diagnostics, convergence checks	Does not fit NMA models by itself	Used to assess and summarize MCMC outputs
+Proposed app.R / NMAs-BR	Custom R/Shiny implementation	Bayesian MH-MCMC NMA + comparison platform	Shows the MH-MCMC process transparently, allows prior sensitivity, produces tables/figures, and compares Bayesian vs frequentist outputs	Should be framed as educational/reproducible implementation, not a replacement for all established packages	Main academic contribution: reproducible, browser-accessible Bayesian NMA workflow
 ## Main features
 
 - Paste binary arm-level NMA data: `study,treatment,responders,sampleSize`
