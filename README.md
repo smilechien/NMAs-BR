@@ -1,6 +1,8 @@
 # NMAs-BR
 NMAs-BR
  # NMAs-BR Shiny App
+# Note:
+The proposed MH-MCMC–based NMAs-BR should be regarded as an accessible and reproducible Bayesian NMA implementation rather than a replacement for established frequentist or Bayesian packages. Compared with JAGS/rjags-based workflows, which require installation of external JAGS software, the proposed app.R provides a more transparent and user-friendly platform for conducting Bayesian NMA, examining prior assumptions, generating MCMC diagnostics, and comparing Bayesian estimates with frequentist NMA results. Therefore, the main academic contribution of this study is the provision of a complete, browser-accessible, and reproducible R/Shiny implementation that helps readers understand and apply Bayesian NMA using MH-MCMC.
 
 This repository contains a self-contained `app.R` for browser-based network meta-analysis (NMA).
 
