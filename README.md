@@ -84,8 +84,8 @@ rsconnect::deployApp(appDir = ".", appName = "NMAsBR")
 The `Tables/Figures` tab now includes **Figure 4. Convergence diagnostic / shrink-factor plot**. It draws Gelman-Rubin shrink-factor curves for the main non-E reference contrasts, usually B vs A, C vs A, and D vs A. Treatment E is skipped in this manuscript-style diagnostic because sparse or zero-event data may lead to poor convergence; users can inspect and remove E when appropriate, then rerun the analysis.
 
 The app is self-contained and does not use `readLines(url)` or `eval(parse())`. The object `data_f_bin` is created locally through `meta::pairwise()`, avoiding the previous `object 'data_f_bin' not found` error.
-example 1 for interpretation in details:
-這是一個用於 NMA（network meta-analysis，網絡統合分析） 的 arm-level binary outcome dataset（研究組別層級的二元結果資料）。每一列代表某一篇研究中的一個治療組，而不是一篇研究的總結果。
+
+# Example 1 for interpretation in details: #這是一個用於 NMA（network meta-analysis，網絡統合分析） 的 arm-level binary outcome dataset（研究組別層級的二元結果資料）。每一列代表某一篇研究中的一個治療組，而不是一篇研究的總結果。
 
 1. 欄位意義
 欄位	說明
