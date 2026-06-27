@@ -47,6 +47,42 @@ In R-based network meta-analysis (NMA), the packages used in this study have dif
 
 The proposed MH-MCMC-based NMAs-BR app is not intended to replace established packages such as `netmeta`, `gemtc`, or `rjags`. Instead, it provides a practical, transparent, and reproducible R/Shiny implementation that lowers the technical barrier for users. In particular, it helps users who may have difficulty installing external JAGS software required by `rjags`, while also allowing prior-sensitivity analysis, MCMC diagnostics, and comparison with frequentist NMA results.
 
+## Compared tp several R/Shiny-based tools for network meta-analysis
+  Although several R/Shiny-based tools for network meta-analysis have been reported previously, including MetaInsight, NetMetaEasy, and NMAsurv, these platforms primarily provide user-friendly interfaces built on established NMA packages or focus on specific data structures such as survival outcomes. The proposed NMAs-BR app.R differs by offering a transparent and reproducible MH-MCMC implementation for Bayesian NMA, allowing users to examine prior-distribution assumptions, modify prior parameters, regenerate Bayesian estimates and MCMC diagnostic figures, and compare the results with frequentist NMA outputs. Thus, the contribution of this study is not the first use of R/Shiny for NMA, but the provision of a self-contained, educational, and reproducible Bayesian NMA workflow that may reduce the technical barrier associated with JAGS/rjags-based Bayesian analysis.
+
+## Similar R-Based or R/Shiny Tools for Network Meta-Analysis
+
+Several R-based or R/Shiny-based tools for network meta-analysis (NMA) have been reported in PubMed-indexed or academic literature. However, the proposed `app.R` / NMAs-BR differs by emphasizing a transparent MH-MCMC Bayesian NMA workflow, prior-distribution sensitivity analysis, adjustable prior parameters, MCMC diagnostics, and direct comparison with frequentist NMA outputs.
+
+| Article/tool found in PubMed or academic search                              | AMA citation | Similarity to proposed `app.R` / NMAs-BR                                                                                    | Difference from proposed contribution                                                                                                                                                                                                                                             |
+| ---------------------------------------------------------------------------- | -----------: | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| MetaInsight                                                                  |            1 | R/Shiny web tool for analyzing, interrogating, and visualizing NMA using `netmeta`.                                         | Mainly a web interface built around established R packages; not presented as a transparent author-written MH-MCMC implementation with adjustable prior-distribution sensitivity analysis.                                                                                         |
+| NetMetaEasy                                                                  |            2 | R/Shiny platform for rapid and user-friendly NMA; supports frequentist and Bayesian NMA options.                            | Similar in user-friendly goal, but emphasizes rapid standard NMA workflows rather than demonstrating a custom MH-MCMC algorithm and Table 1 prior-sensitivity rerun logic.                                                                                                        |
+| NMAsurv                                                                      |            3 | R/Shiny application for NMA based on survival or time-to-event data.                                                        | Focuses on survival-data NMA, including non-proportional hazards models, rather than binary arm-level Bayesian MH-MCMC NMA with log-odds priors.                                                                                                                                  |
+| Network meta-analysis: application and practice using R software             |            4 | Academic paper explaining R-based NMA using Bayesian and frequentist approaches, including `gemtc`, `rjags`, and `netmeta`. | Uses and teaches existing R packages; it is not a Shiny app contribution and does not provide a self-contained MH-MCMC rerun platform for prior sensitivity and manuscript figure generation.                                                                                     |
+| Performing arm-based network meta-analysis in R with the `pcnetmeta` package |            5 | R-based methodological NMA article relevant to Bayesian computation and arm-based modeling.                                 | Methodological and package-based; not an interactive app.R-style platform for users to rerun prior assumptions and regenerate manuscript tables and figures.                                                                                                                      |
+| BayesMetaNMA                                                                 |            6 | Very similar in spirit: an R/Shiny application for Bayesian pairwise and network meta-analysis.                             | It uses `rjags`/JAGS for MCMC estimation and also integrates `netmeta` and `meta`; therefore, it still depends on JAGS/rjags, whereas the proposed `app.R` can be framed as a simpler transparent MH-MCMC implementation with adjustable prior-distribution sensitivity analysis. |
+
+## Interpretation
+
+The proposed `app.R` / NMAs-BR should not be claimed as the first R/Shiny tool for NMA. A safer and stronger claim is that it provides a transparent, reproducible, and educational MH-MCMC implementation for Bayesian NMA, allowing users to modify prior assumptions, rerun Bayesian estimates, regenerate prior-dependent figures, and compare results with frequentist NMA outputs.
+
+## References
+
+1. Owen RK, Bradbury N, Xin Y, Cooper N, Sutton A. MetaInsight: an interactive web-based tool for analyzing, interrogating, and visualizing network meta-analyses using R-shiny and netmeta. *Res Synth Methods*. 2019;10(4):569-581. doi:10.1002/jrsm.1373
+
+2. Fekete JT, Komócsi A, Győrffy B. NetMetaEasy: enabling rapid and user-friendly network meta-analysis (NMA) for comparative effectiveness research. *Br J Pharmacol*. 2026;183(9):1814-1823. doi:10.1111/bph.70391
+
+3. Shao T, Zhao M, Shi F, Rui M, Tang W. NMAsurv: an R Shiny application for network meta-analysis based on survival data. *Res Synth Methods*. 2025;16(6):1042-1056. doi:10.1017/rsm.2025.10020
+
+4. Shim SR, Kim SJ, Lee J, Rücker G. Network meta-analysis: application and practice using R software. *Epidemiol Health*. 2019;41:e2019013. doi:10.4178/epih.e2019013
+
+5. Lin L, Zhang J, Hodges JS, Chu H. Performing arm-based network meta-analysis in R with the `pcnetmeta` package. *J Stat Softw*. 2017;80(5):1-25. doi:10.18637/jss.v080.i05
+
+6. Khan L, Khan M, Ahmad M, Lac J. Title:BayesMetaNMA: an interactive R/Shiny application for Bayesian pairwise and network meta-analysis [version 1; peer review: 1 approved with reservations, 1 not approved]. *F1000Research*. 2025;14:924. doi:10.12688/f1000research.169341.1
+
+
+
 ## Main features
 
 - Paste binary arm-level NMA data: `study,treatment,responders,sampleSize`
