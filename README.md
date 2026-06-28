@@ -82,6 +82,112 @@ The proposed `app.R` / NMAs-BR should not be claimed as the first R/Shiny tool f
 6. Khan L, Khan M, Ahmad M, Lac J. Title:BayesMetaNMA: an interactive R/Shiny application for Bayesian pairwise and network meta-analysis [version 1; peer review: 1 approved with reservations, 1 not approved]. *F1000Research*. 2025;14:924. doi:10.12688/f1000research.169341.1
 
 
+## Why Use Bayesian Network Meta-Analysis?
+
+This application supports Bayesian network meta-analysis (Bayesian NMA) in addition to traditional frequentist NMA because Bayesian estimation provides a more flexible, extensible, and probability-based framework for comparing multiple treatments in a connected evidence network.
+
+### 1. Flexible modeling framework
+
+Traditional frequentist NMA is useful for estimating pooled treatment effects and confidence intervals. However, Bayesian NMA is often more flexible when the treatment network is complex, sparse, or includes multi-arm trials.
+
+Bayesian NMA can naturally handle:
+
+| Situation             | Benefit of Bayesian NMA                                                |
+| --------------------- | ---------------------------------------------------------------------- |
+| Sparse comparisons    | Allows estimation even when some direct comparisons are limited        |
+| Multi-arm studies     | Accounts for shared study-level information across arms                |
+| Random-effects models | Estimates between-study heterogeneity as a posterior distribution      |
+| Small datasets        | Allows uncertainty to be expressed more fully                          |
+| Complex networks      | Supports consistency, inconsistency, and hierarchical model structures |
+
+For example, if treatment E appears in only a few studies, a frequentist estimate may be unstable. Bayesian NMA still estimates the posterior distribution for treatment E while clearly showing the uncertainty through a wide credible interval.
+
+### 2. Extensible analytical structure
+
+Bayesian NMA is useful because the model can be extended beyond a simple treatment comparison. Once the basic model is established, additional assumptions or structures can be added.
+
+Possible extensions include:
+
+| Extension                  | Example                                                                       |
+| -------------------------- | ----------------------------------------------------------------------------- |
+| Network meta-regression    | Adjusting for age, disease severity, follow-up time, or baseline risk         |
+| Class-effect model         | Grouping treatments by mechanism or route of administration                   |
+| Dose-response NMA          | Comparing different doses of the same treatment                               |
+| Multi-outcome NMA          | Jointly evaluating efficacy and adverse events                                |
+| Prior sensitivity analysis | Testing whether results change under different prior assumptions              |
+| Treatment ranking          | Estimating the probability that each treatment is best, second best, or worst |
+
+This makes Bayesian NMA especially useful when the purpose of the analysis is not only to estimate treatment effects, but also to support clinical decision-making and future model expansion.
+
+### 3. Probability-based interpretation
+
+A major advantage of Bayesian NMA is that it provides direct probability-based interpretations.
+
+In frequentist NMA, a 95% confidence interval does not mean that there is a 95% probability that the true effect lies within the interval. Instead, it refers to long-run repeated-sampling behavior.
+
+In Bayesian NMA, a 95% credible interval can be interpreted more directly:
+
+> Given the observed data, model assumptions, and prior distributions, there is a 95% posterior probability that the treatment effect lies within this interval.
+
+This interpretation is often easier for clinicians, reviewers, and readers to understand.
+
+### 4. Example interpretation: treatment effect
+
+Suppose the Bayesian NMA result is:
+
+| Comparison |   OR |      95% CrI | Posterior probability |
+| ---------- | ---: | -----------: | --------------------: |
+| B vs A     | 1.80 | 1.10 to 3.20 |     Pr(OR > 1) = 0.97 |
+
+This can be interpreted as:
+
+> Treatment B has higher odds of response than treatment A. The posterior median odds ratio is 1.80, suggesting that treatment B may increase the odds of response by approximately 80% compared with treatment A. The 95% credible interval ranges from 1.10 to 3.20, and the posterior probability that treatment B is better than treatment A is 97%.
+
+This probability-based statement is more clinically intuitive than simply reporting whether a confidence interval excludes 1.
+
+### 5. Example interpretation: uncertain evidence
+
+Suppose another result is:
+
+| Comparison |   OR |      95% CrI | Posterior probability |
+| ---------- | ---: | -----------: | --------------------: |
+| C vs A     | 1.35 | 0.70 to 2.60 |     Pr(OR > 1) = 0.78 |
+
+This can be interpreted as:
+
+> Treatment C may be better than treatment A, but the evidence remains uncertain. Although the posterior median odds ratio favors treatment C, the 95% credible interval includes 1. The posterior probability that treatment C is better than treatment A is 78%, suggesting possible benefit but not strong certainty.
+
+This avoids forcing the conclusion into only “significant” or “not significant” and instead provides a graded probability of benefit.
+
+### 6. Example interpretation: treatment ranking
+
+Bayesian NMA can also estimate the probability that each treatment has the best performance.
+
+| Treatment | Probability of being best |
+| --------- | ------------------------: |
+| D         |                       45% |
+| B         |                       30% |
+| C         |                       15% |
+| E         |                        7% |
+| A         |                        3% |
+
+This can be interpreted as:
+
+> Treatment D had the highest probability of being the best treatment, with a 45% posterior probability of ranking first. However, treatment B also showed a substantial probability of being best at 30%, indicating that the treatment ranking remains uncertain rather than definitive.
+
+This is useful because NMA often compares more than two treatments, and readers may want to know which treatment is most likely to perform best overall.
+
+### 7. Summary
+
+Bayesian NMA was included because it provides three key advantages:
+
+| Advantage         | Meaning                                                                                                   |
+| ----------------- | --------------------------------------------------------------------------------------------------------- |
+| Flexible          | Can model complex treatment networks, sparse evidence, multi-arm trials, and random effects               |
+| Extensible        | Can be expanded to include covariates, prior sensitivity analysis, class effects, ranking, and prediction |
+| Probability-based | Can directly answer questions such as “What is the probability that treatment B is better than A?”        |
+
+Therefore, Bayesian NMA does not merely provide another odds ratio. It provides a richer decision-oriented framework that allows treatment effects, uncertainty, and ranking probabilities to be interpreted in a clinically meaningful way.
 
 ## Main features
 
