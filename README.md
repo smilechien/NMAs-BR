@@ -82,7 +82,7 @@ The proposed `app.R` / NMAs-BR should not be claimed as the first R/Shiny tool f
 6. Khan L, Khan M, Ahmad M, Lac J. Title:BayesMetaNMA: an interactive R/Shiny application for Bayesian pairwise and network meta-analysis [version 1; peer review: 1 approved with reservations, 1 not approved]. *F1000Research*. 2025;14:924. doi:10.12688/f1000research.169341.1
 
 
-## Why Use Bayesian Network Meta-Analysis?
+#### Why Use Bayesian Network Meta-Analysis?
 
 This application supports Bayesian network meta-analysis (Bayesian NMA) in addition to traditional frequentist NMA because Bayesian estimation provides a more flexible, extensible, and probability-based framework for comparing multiple treatments in a connected evidence network.
 
@@ -189,7 +189,7 @@ Bayesian NMA was included because it provides three key advantages:
 
 Therefore, Bayesian NMA does not merely provide another odds ratio. It provides a richer decision-oriented framework that allows treatment effects, uncertainty, and ranking probabilities to be interpreted in a clinically meaningful way.
 
-## Main features
+#### Main features
 
 - Paste binary arm-level NMA data: `study,treatment,responders,sampleSize`
 - Paste contrast-level NMA data: `study,treat1,treat2,TE,seTE`
